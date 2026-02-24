@@ -35,7 +35,6 @@ class PaginaUno extends StatelessWidget {
             _itemLibro(context, 'Libro 2', '\$180', 'imagenes/Captura1.PNG'),
             _itemLibro(context, 'Libro 3', '\$200', 'imagenes/Captura4.PNG'),
             _itemLibro(context, 'Libro 4', '\$150', 'imagenes/Captura5.PNG'),
-            _itemLibro(context, 'Libro 5', '\$300', 'imagenes/Captura6.PNG'),
             _itemLibro(context, 'Libro 6', '\$220', 'imagenes/Captura7.PNG'),
             _itemLibro(context, 'Libro 7', '\$190', 'imagenes/Captura8.PNG'),
             const SizedBox(height: 30),

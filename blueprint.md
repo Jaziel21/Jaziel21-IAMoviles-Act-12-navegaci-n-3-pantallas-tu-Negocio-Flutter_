@@ -20,4 +20,5 @@ Librería AJMG is a simple Flutter application that allows users to browse a lis
 
 ## Current Task
 
-The current task is to populate the application with more content, including more books on the main page and more offers on the offers page. This task has been completed.
+*   **Completed:** Populated the application with more content, including more books on the main page and more offers on the offers page.
+*   **Current:** Removed "Libro 5" from the book listing as requested.
