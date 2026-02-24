@@ -28,4 +28,5 @@ Librería AJMG is a simple Flutter application that allows users to browse a lis
 *   **Completed:** Updated the design of the main page to match the provided sketch.
 *   **Completed:** Implemented navigation to the shopping cart screen from the app bar and the categories navigation.
 *   **Completed:** Changed the shopping cart icon navigation to go to the 'Ofertas' screen.
-*   **Current:** Added user's name and grade to the app bar again.
+*   **Completed:** Added user's name and grade to the app bar again.
+*   **Current:** Fixed the text overflow issue in the app bar by wrapping the title in an `Expanded` widget and adjusting the font size.

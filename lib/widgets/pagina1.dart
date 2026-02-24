@@ -20,11 +20,16 @@ class PaginaUno extends StatelessWidget {
           children: [
             const Icon(Icons.menu_book, color: Color(0xFFF1C40F)),
             const SizedBox(width: 8),
-            Text(
-              'LIBRERÍA - Alfredo Martinez 6 I',
-              style: GoogleFonts.oswald(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+            Expanded(
+              child: Text(
+                'LIBRERÍA - Alfredo Martinez 6 I',
+                style: GoogleFonts.oswald(
+                  fontSize: 20, // Adjusted font size
+                  fontWeight: FontWeight.bold,
+                ),
+                overflow: TextOverflow.ellipsis, // Added overflow handling
+                maxLines: 2, // Allow up to 2 lines
+                textAlign: TextAlign.center,
               ),
             ),
           ],
@@ -170,7 +175,7 @@ class PaginaUno extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(
+            style: ElevatedButton.stylefrom(
               backgroundColor: const Color(0xFFF1C40F).withOpacity(0.8),
               foregroundColor: Colors.black,
               shape: RoundedRectangleBorder(
