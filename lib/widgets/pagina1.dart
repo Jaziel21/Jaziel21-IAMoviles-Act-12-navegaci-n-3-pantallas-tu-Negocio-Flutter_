@@ -9,11 +9,20 @@ class PaginaUno extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            Icon(Icons.menu_book, color: Color(0xFFF1C40F)),
-            SizedBox(width: 10),
-            Text('LIBRERÍA AJMG'),
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            const Icon(Icons.menu_book, color: Color(0xFFF1C40F)),
+            const SizedBox(width: 10),
+            const Text('LIBRERÍA AJMG'),
+            const SizedBox(width: 10),
+            Text(
+              'Alfredo Martinez 6 I',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.white.withOpacity(0.8),
+              ),
+            ),
           ],
         ),
       ),
