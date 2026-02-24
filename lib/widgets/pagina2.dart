@@ -40,7 +40,7 @@ class PaginaDos extends StatelessWidget {
               titulo: 'UN LIBRO MÁS',
               precio: '\$210',
               color: Color(0xFFE74C3C),
-              imagePath: 'imagenes/Captura2.PNG',
+              imagePath: 'imagenes/Captura3.PNG',
             ),
           ),
           const SizedBox(height: 40),
