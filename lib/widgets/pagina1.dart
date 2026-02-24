@@ -21,7 +21,7 @@ class PaginaUno extends StatelessWidget {
             const Icon(Icons.menu_book, color: Color(0xFFF1C40F)),
             const SizedBox(width: 8),
             Text(
-              'LIBRERÍA',
+              'LIBRERÍA - Alfredo Martinez 6 I',
               style: GoogleFonts.oswald(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,

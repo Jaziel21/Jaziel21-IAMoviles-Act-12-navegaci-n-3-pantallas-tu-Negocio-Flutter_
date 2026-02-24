@@ -27,4 +27,5 @@ Librería AJMG is a simple Flutter application that allows users to browse a lis
 *   **Completed:** Added "Alfredo Martinez 6 I" to the app bar.
 *   **Completed:** Updated the design of the main page to match the provided sketch.
 *   **Completed:** Implemented navigation to the shopping cart screen from the app bar and the categories navigation.
-*   **Current:** Changed the shopping cart icon navigation to go to the 'Ofertas' screen.
+*   **Completed:** Changed the shopping cart icon navigation to go to the 'Ofertas' screen.
+*   **Current:** Added user's name and grade to the app bar again.
