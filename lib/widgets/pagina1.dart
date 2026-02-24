@@ -32,7 +32,7 @@ class PaginaUno extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart_outlined),
-            onPressed: () => Navigator.pushNamed(context, '/carrito'),
+            onPressed: () => Navigator.pushNamed(context, '/ofertas'),
           ),
         ],
         elevation: 0,
@@ -69,7 +69,7 @@ class PaginaUno extends StatelessWidget {
                   _buildVerticalDivider(),
                   IconButton(
                     icon: const Icon(Icons.shopping_cart, size: 20),
-                    onPressed: () => Navigator.pushNamed(context, '/carrito'),
+                    onPressed: () => Navigator.pushNamed(context, '/ofertas'),
                   ),
                 ],
               ),
