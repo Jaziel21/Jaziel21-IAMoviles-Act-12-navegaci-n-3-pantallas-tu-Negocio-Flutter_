@@ -68,9 +68,7 @@ Crea un `StatefulWidget` llamado `HoverableWidget`. Cuando el cursor pase por en
 #### **Pantalla 1: Inicio (`PaginaUno`)**
 
 *   **AppBar:**
-    *   A la izquierda, un botón con el ícono de menú (`Icons.menu`).
     *   El título debe ser "LIBRERÍA - Alfredo Martinez 6 I" con la fuente `Oswald` y un ícono de libro (`Icons.menu_book`) al lado.
-    *   A la derecha, un botón con el ícono del carrito (`Icons.shopping_cart_outlined`) que lleve a `/ofertas`.
     *   Aplica el `HoverableWidget` a los botones del `AppBar`.
 
 *   **Body:**
@@ -82,7 +80,7 @@ Crea un `StatefulWidget` llamado `HoverableWidget`. Cuando el cursor pase por en
         *   Ser `clicable` y llevar a `/ofertas`. Aplícale el `HoverableWidget`.
         *   Mostrar la imagen del libro, título, precio y un botón de "Ver".
     *   Un botón principal para "Iniciar Sesión".
-    *   Un pequeño footer con enlaces de texto para "Ofertas" y "Contacto".
+    *   Un pequeño footer con enlaces de texto para "Ofertas", "Contacto" y icono de carrito que lleva a '/ofertas'.
 
 #### **Pantalla 2: Ofertas (`PaginaDos`)**
 
