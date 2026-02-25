@@ -2,6 +2,42 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// --------- Hover Effect Widget Definition ---------
+class HoverableWidget extends StatefulWidget {
+  final Widget child;
+  const HoverableWidget({Key? key, required this.child}) : super(key: key);
+
+  @override
+  _HoverableWidgetState createState() => _HoverableWidgetState();
+}
+
+class _HoverableWidgetState extends State<HoverableWidget> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => _onHover(true),
+      onExit: (_) => _onHover(false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        transform: _isHovered
+            ? (Matrix4.identity()..scale(1.05))
+            : Matrix4.identity(),
+        transformAlignment: Alignment.center,
+        child: widget.child,
+      ),
+    );
+  }
+
+  void _onHover(bool isHovered) {
+    setState(() {
+      _isHovered = isHovered;
+    });
+  }
+}
+// --------------------------------------------------
+
 class PaginaUno extends StatelessWidget {
   const PaginaUno({super.key});
 
@@ -9,11 +45,13 @@ class PaginaUno extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            // Handle menu button press
-          },
+        leading: HoverableWidget(
+          child: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              // Handle menu button press
+            },
+          ),
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -24,20 +62,22 @@ class PaginaUno extends StatelessWidget {
               child: Text(
                 'LIBRERÍA - Alfredo Martinez 6 I',
                 style: GoogleFonts.oswald(
-                  fontSize: 20, // Adjusted font size
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
-                overflow: TextOverflow.ellipsis, // Added overflow handling
-                maxLines: 2, // Allow up to 2 lines
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
                 textAlign: TextAlign.center,
               ),
             ),
           ],
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.shopping_cart_outlined),
-            onPressed: () => Navigator.pushNamed(context, '/ofertas'),
+          HoverableWidget(
+            child: IconButton(
+              icon: const Icon(Icons.shopping_cart_outlined),
+              onPressed: () => Navigator.pushNamed(context, '/ofertas'),
+            ),
           ),
         ],
         elevation: 0,
@@ -72,9 +112,11 @@ class PaginaUno extends StatelessWidget {
                   _buildVerticalDivider(),
                   const Text('Categorías'),
                   _buildVerticalDivider(),
-                  IconButton(
-                    icon: const Icon(Icons.shopping_cart, size: 20),
-                    onPressed: () => Navigator.pushNamed(context, '/ofertas'),
+                  HoverableWidget(
+                    child: IconButton(
+                      icon: const Icon(Icons.shopping_cart, size: 20),
+                      onPressed: () => Navigator.pushNamed(context, '/ofertas'),
+                    ),
                   ),
                 ],
               ),
@@ -104,17 +146,19 @@ class PaginaUno extends StatelessWidget {
               const SizedBox(height: 30),
 
               // Iniciar Sesion Button
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF1E293B),
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+              HoverableWidget(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF1E293B),
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  onPressed: () {},
+                  child: const Text('Iniciar Sesión'),
                 ),
-                onPressed: () {},
-                child: const Text('Iniciar Sesión'),
               ),
               const SizedBox(height: 20),
 
@@ -122,13 +166,17 @@ class PaginaUno extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextButton(
-                      onPressed: () => Navigator.pushNamed(context, '/ofertas'),
-                      child: const Text('Ofertas', style: TextStyle(color: Colors.white70))),
+                  HoverableWidget(
+                    child: TextButton(
+                        onPressed: () => Navigator.pushNamed(context, '/ofertas'),
+                        child: const Text('Ofertas', style: TextStyle(color: Colors.white70))),
+                  ),
                   _buildVerticalDivider(),
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text('Contacto', style: TextStyle(color: Colors.white70))),
+                  HoverableWidget(
+                    child: TextButton(
+                        onPressed: () {},
+                        child: const Text('Contacto', style: TextStyle(color: Colors.white70))),
+                  ),
                 ],
               )
             ],
@@ -149,44 +197,49 @@ class PaginaUno extends StatelessWidget {
 
   Widget _itemLibro(
       BuildContext context, String titulo, String precio, String imagePath) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 15),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1E293B),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          Image.asset(imagePath,
-              width: 40, height: 60, fit: BoxFit.cover),
-          const SizedBox(width: 15),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(titulo,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.bold)),
-                Text(precio,
-                    style: const TextStyle(
-                        fontSize: 14, color: Color(0xFFF1C40F))),
-              ],
-            ),
+    return HoverableWidget( // Wrap the whole book item
+      child: GestureDetector(
+        onTap: () => Navigator.pushNamed(context, '/ofertas'), // Make the whole card tappable
+        child: Container(
+          margin: const EdgeInsets.only(bottom: 15),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: const Color(0xFF1E293B),
+            borderRadius: BorderRadius.circular(10),
           ),
-          ElevatedButton(
-            style: ElevatedButton.stylefrom(
-              backgroundColor: const Color(0xFFF1C40F).withOpacity(0.8),
-              foregroundColor: Colors.black,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
+          child: Row(
+            children: [
+              Image.asset(imagePath,
+                  width: 40, height: 60, fit: BoxFit.cover),
+              const SizedBox(width: 15),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(titulo,
+                        style: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
+                    Text(precio,
+                        style: const TextStyle(
+                            fontSize: 14, color: Color(0xFFF1C40F))),
+                  ],
+                ),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-            ),
-            onPressed: () => Navigator.pushNamed(context, '/ofertas'),
-            child: const Text('Ver'),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFF1C40F).withOpacity(0.8),
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                ),
+                onPressed: () => Navigator.pushNamed(context, '/ofertas'),
+                child: const Text('Ver'),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
