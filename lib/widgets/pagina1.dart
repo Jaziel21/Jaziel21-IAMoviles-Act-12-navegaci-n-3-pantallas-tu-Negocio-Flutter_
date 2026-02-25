@@ -97,6 +97,13 @@ class PaginaUno extends StatelessWidget {
                   const Text('Inicio'),
                   _buildVerticalDivider(),
                   const Text('Categorías'),
+                  _buildVerticalDivider(),
+                  HoverableWidget(
+                    child: IconButton(
+                      icon: const Icon(Icons.shopping_cart, size: 20),
+                      onPressed: () => Navigator.pushNamed(context, '/ofertas'),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 30),
@@ -155,13 +162,6 @@ class PaginaUno extends StatelessWidget {
                     child: TextButton(
                         onPressed: () {},
                         child: const Text('Contacto', style: TextStyle(color: Colors.white70))),
-                  ),
-                   _buildVerticalDivider(),
-                   HoverableWidget(
-                    child: IconButton(
-                      icon: const Icon(Icons.shopping_cart, size: 20),
-                      onPressed: () => Navigator.pushNamed(context, '/ofertas'),
-                    ),
                   ),
                 ],
               )
