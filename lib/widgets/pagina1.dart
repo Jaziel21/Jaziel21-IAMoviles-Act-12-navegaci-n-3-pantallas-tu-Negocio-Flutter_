@@ -45,22 +45,15 @@ class PaginaUno extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: HoverableWidget(
-          child: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              // Handle menu button press
-            },
-          ),
-        ),
+        automaticallyImplyLeading: false, // Removes the default back button or menu icon
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.menu_book, color: Color(0xFFF1C40F)),
+            const Icon(Icons.menu_book, color: Color(0xFFF1C40F), size: 30), // Icon size increased
             const SizedBox(width: 8),
             Expanded(
               child: Text(
-                'LIBRERÍA - Alfredo Martinez 6 I',
+                'LIBRERÍA AJMG - Alfredo Martinez 6 I', // Title updated
                 style: GoogleFonts.oswald(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -72,14 +65,7 @@ class PaginaUno extends StatelessWidget {
             ),
           ],
         ),
-        actions: [
-          HoverableWidget(
-            child: IconButton(
-              icon: const Icon(Icons.shopping_cart_outlined),
-              onPressed: () => Navigator.pushNamed(context, '/ofertas'),
-            ),
-          ),
-        ],
+        actions: [], // Removed the shopping cart icon from the app bar
         elevation: 0,
         centerTitle: true,
       ),
@@ -111,13 +97,6 @@ class PaginaUno extends StatelessWidget {
                   const Text('Inicio'),
                   _buildVerticalDivider(),
                   const Text('Categorías'),
-                  _buildVerticalDivider(),
-                  HoverableWidget(
-                    child: IconButton(
-                      icon: const Icon(Icons.shopping_cart, size: 20),
-                      onPressed: () => Navigator.pushNamed(context, '/ofertas'),
-                    ),
-                  ),
                 ],
               ),
               const SizedBox(height: 30),
@@ -139,10 +118,10 @@ class PaginaUno extends StatelessWidget {
               const SizedBox(height: 15),
 
               // Book List
-              _itemLibro(context, 'Libro 1', '\$250', 'imagenes/Captura.PNG'),
-              _itemLibro(context, 'Libro 2', '\$180', 'imagenes/Captura1.PNG'),
-              _itemLibro(context, 'Libro 3', '\$200', 'imagenes/Captura4.PNG'),
-              _itemLibro(context, 'Libro 4', '\$150', 'imagenes/Captura5.PNG'),
+              _itemLibro(context, 'HÁBITOS ATÓMICOS', '\$250', 'imagenes/Captura.PNG'),
+              _itemLibro(context, 'DESEO OSCURO', '\$180', 'imagenes/Captura1.PNG'),
+              _itemLibro(context, 'MÉXICO EN LLAMAS', '\$200', 'imagenes/Captura4.PNG'),
+              _itemLibro(context, 'GRAMÁTICA INGLESA', '\$150', 'imagenes/Captura5.PNG'),
               const SizedBox(height: 30),
 
               // Iniciar Sesion Button
@@ -176,6 +155,13 @@ class PaginaUno extends StatelessWidget {
                     child: TextButton(
                         onPressed: () {},
                         child: const Text('Contacto', style: TextStyle(color: Colors.white70))),
+                  ),
+                   _buildVerticalDivider(),
+                   HoverableWidget(
+                    child: IconButton(
+                      icon: const Icon(Icons.shopping_cart, size: 20),
+                      onPressed: () => Navigator.pushNamed(context, '/ofertas'),
+                    ),
                   ),
                 ],
               )
@@ -213,30 +199,31 @@ class PaginaUno extends StatelessWidget {
                   width: 40, height: 60, fit: BoxFit.cover),
               const SizedBox(width: 15),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(titulo,
+                child: Text(titulo,
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold)),
-                    Text(precio,
-                        style: const TextStyle(
-                            fontSize: 14, color: Color(0xFFF1C40F))),
-                  ],
-                ),
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFF1C40F).withOpacity(0.8),
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
+              const SizedBox(width: 10),
+              Row( // Row for price and button
+                children: [
+                  Text(precio,
+                      style: const TextStyle(
+                          fontSize: 14, color: Color(0xFFF1C40F))),
+                  const SizedBox(width: 10),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFF1C40F).withOpacity(0.8),
+                      foregroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    ),
+                    onPressed: () => Navigator.pushNamed(context, '/ofertas'),
+                    child: const Text('Ver'),
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                ),
-                onPressed: () => Navigator.pushNamed(context, '/ofertas'),
-                child: const Text('Ver'),
-              ),
+                ],
+              )
             ],
           ),
         ),

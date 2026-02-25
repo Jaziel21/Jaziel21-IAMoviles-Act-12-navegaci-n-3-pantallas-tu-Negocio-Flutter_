@@ -52,7 +52,7 @@ class PaginaDos extends StatelessWidget {
           ),
         ),
         title: Text(
-          'OFERTAS AJMG',
+          'CARRITO', // Title updated
           style: GoogleFonts.oswald(
             fontWeight: FontWeight.bold,
           ),
